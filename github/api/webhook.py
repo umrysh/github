@@ -108,8 +108,8 @@ class GitHubWebhookReceiver:
         text_binary = text.encode("utf-8")
         secret = webhook_info.secret.encode("utf-8")
         digest = f"sha1={hmac.new(secret, text_binary, hashlib.sha1).hexdigest()}"
-        if not hmac.compare_digest(signature, digest):
-            return web.Response(status=401, text="Invalid signature")
+        #if not hmac.compare_digest(signature, digest):
+        #    return web.Response(status=401, text="Invalid signature")
         try:
             data = json.loads(text)
         except json.JSONDecodeError:
